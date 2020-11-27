@@ -1,39 +1,18 @@
-#include <iostream>
-#include <unordered_map>
-#include <unordered_set>
-#include <vector>
-#include <string>
-#include <algorithm>
-#include <stack>
-#include <cstring>
-#include <queue>
-#include <cmath>
-#include <bitset>
-#include <deque>
-#include <memory>
-#include <thread>
-#include "zconf.h"
-#include <iostream>
-#include <utility>
-#include <thread>
-#include <chrono>
-#include <functional>
-#include <atomic>
-
-using namespace std;
-
+//
+// Created by lenovo on 2020/11/27.
+//
 class Solution {
 public:
     int findNthDigit(int n) {
-    // 1: [0, 9]
-    // 2: [10, 189] 两位数的10 - 99 对应 10 - 189位 (10 * 2 - 10 至 99 * 2 - 10位)
-    // 3: [190, 2889] 三位数的100 - 999 对应 190 - 2889位 (100 * 3 - 110 至 999 * 3 - 110位)
-    // 4: [2890, 38889]
-    // 5: [38890, 488889]
-    // 6: [488890, 5888889]
-    // 7: [5888890, 68888889]
-    // 8: [68888890, 788888889]
-    // 9: [788888890, 8888888889] 88 8888 8889 已经大于21 4748 3648
+        // 1: [0, 9]
+        // 2: [10, 189] 两位数的10 - 99 对应 10 - 189位 (10 * 2 - 10 至 99 * 2 - 10位)
+        // 3: [190, 2889] 三位数的100 - 999 对应 190 - 2889位 (100 * 3 - 110 至 999 * 3 - 110位)
+        // 4: [2890, 38889]
+        // 5: [38890, 488889]
+        // 6: [488890, 5888889]
+        // 7: [5888890, 68888889]
+        // 8: [68888890, 788888889]
+        // 9: [788888890, 8888888889] 88 8888 8889 已经大于21 4748 3648
         if(n<10)
             return n;
         unordered_map<int,pair<long,long>> mymap;
@@ -71,13 +50,7 @@ public:
     }
 };
 
-
-
-int main()
-{
-    int n = 3;
-
-    Solution a;
-    int c = a.findNthDigit(n);
-    std::cout  <<   c   << '\n';
-}
+/**
+ * 先把数据都分好一个个区域，再找在哪个区域的哪个数字
+ *
+ * */
