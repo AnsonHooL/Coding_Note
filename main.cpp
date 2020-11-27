@@ -19,65 +19,93 @@
 #include <chrono>
 #include <functional>
 #include <atomic>
-
+#include <cstring>
 using namespace std;
+
+#include <cstdio>
+#include <cstdlib>
+
+
+bool cmp(int a, int b){   //升序排列，小的数字放在前面 10,100  10100 10010 判断的是从高位到低位
+
+//    string atmp = to_string(a) + to_string(b);
+//    string btmp = to_string(b) + to_string(a);
+    return to_string(a) + to_string(b) < to_string(b) + to_string(a);//按降序排序
+}
 
 class Solution {
 public:
-    int findNthDigit(int n) {
-    // 1: [0, 9]
-    // 2: [10, 189] 两位数的10 - 99 对应 10 - 189位 (10 * 2 - 10 至 99 * 2 - 10位)
-    // 3: [190, 2889] 三位数的100 - 999 对应 190 - 2889位 (100 * 3 - 110 至 999 * 3 - 110位)
-    // 4: [2890, 38889]
-    // 5: [38890, 488889]
-    // 6: [488890, 5888889]
-    // 7: [5888890, 68888889]
-    // 8: [68888890, 788888889]
-    // 9: [788888890, 8888888889] 88 8888 8889 已经大于21 4748 3648
-        if(n<10)
-            return n;
-        unordered_map<int,pair<long,long>> mymap;
-        mymap[1] = pair<long,long>(0,9);
-        long dig = 10;
-        for(int i=2; i<=9; i++,dig*=10)
-        {
-            long low = mymap[i-1].second + 1;
-            long high = (dig * 9) * i + mymap[i-1].second;
-            mymap[i] = pair<long,long>(low,high);
-        }
-        dig = 1;
-        for(int i = 1;i<=9;i++)
-        {
-            if( n>=mymap[i].first && n<=mymap[i].second)
-            {
-                if(i == 1) dig = 0;
-                else dig = pow(10 , i-1);
+    string minNumber(vector<int>& nums) {
 
-                int index = dig;
-                dig += (n - mymap[i].first) / i;
-                int a = (n - mymap[i].first) % i;
-                int c = 0;
-                do{
-                    c = dig / index;
-                    dig = dig % index;
-                    index = index / 10;
-                    a--;
-                }while(a >= 0);
-                return c ;
-            }
-        }
-        return 0;
+        auto cmp1 = [](int a, int b) ->bool {return to_string(a) + to_string(b) < to_string(b) + to_string(a);};
+        //按降序排序
+        sort(nums.begin(),nums.end(),cmp1);
 
+        string rec;
+        char t[40];
+        for(auto x : nums)
+        {
+            sprintf(t,"%d",x);
+            rec += string(t);
+            cout << t << endl;
+        }
+        return rec;
     }
 };
 
 
+//bool cmp(int a, int b){   //升序排列，小的数字放在前面   100 < 9 判断的是从高位到低位
+//    if(a == 0) return true;
+//    if(b == 0) return false;
+//    if(a == b) return true;
+//    char achar[40];
+//    char bchar[40];
+//    sprintf(achar,"%d",a);
+//    sprintf(bchar,"%d",b);
+////    itoa(a,achar,10);
+////    itoa(b,bchar,10);
+//    int i = 0;
+//    while (achar[i] && bchar[i])
+//    {
+//        if(achar[i] < bchar[i])
+//            return true;
+//        else if(achar[i] > bchar[i])
+//            return false;
+//        else if(achar[i] == bchar[i])
+//            i++;
+//    }
+//    if(bchar[i])
+//        return bchar[0] < bchar[i];
+//    if(achar[i])
+//        return achar[i] < achar[0];
+//    return a < b;//按降序排序
+//}
 
-int main()
-{
-    int n = 3;
+int main(){
+    vector<int> vec;
 
-    Solution a;
-    int c = a.findNthDigit(n);
-    std::cout  <<   c   << '\n';
+    vec.push_back(324);
+    vec.push_back(344);
+    vec.push_back(2134);
+    vec.push_back(23);
+    vec.push_back(10);
+    vec.push_back(101);
+    vec.push_back(12);
+    vec.push_back(134);
+    vec.push_back(987);
+
+    sort(vec.begin(),vec.end(),cmp);
+
+    vector<int>::iterator it;
+//    for(it = vec.begin();it != vec.end();it++)
+//        cout<<*it<<" ";
+//    cout<<endl;
+
+    vector<int> veca;
+    veca.push_back(10);
+    veca.push_back(2);
+    Solution s;
+    s.minNumber(veca);
+
+    return 0;
 }
