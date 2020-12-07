@@ -13,7 +13,7 @@ public:
     mutex(const mutex& other) = delete;
     mutex& operator=(const mutex& other) = delete;
     mutex(mutex && other) = delete;
-    mutex&operator=(mutex&& other) = delete;
+    mutex& operator=(mutex&& other) = delete;
     void lock()
     {
         int expected = 0;
@@ -44,6 +44,7 @@ public:
         flag.clear();
     }
 };
+
 
 
 //mutex mtx;

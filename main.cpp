@@ -54,7 +54,32 @@ public:
 };
 
 
+
+class A
+{
+public:
+    A()
+    {
+
+    }
+    ~A(){ printf("delete\n");}
+};
+
+
+A operator+(A lhs,A rhs)
+{
+    return  A();
+}
+
+A play()
+{
+    return A();
+}
+
+
 int main(){
+
+
     vector<int> vec;
 
     vec.push_back(324);
@@ -69,6 +94,8 @@ int main(){
 
     vector<int>::iterator it;
     Solution a;
+
+
 
     return 0;
 }
