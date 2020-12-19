@@ -21,3 +21,25 @@ public:
         reverse(ans.begin(),ans.end());
     }
 };
+
+
+/**
+ * 空间换时间
+ * 还可以用栈或者递归
+ * */
+递归
+class Solution {
+public:
+    vector<int> re;
+
+    vector<int> reversePrint(ListNode* head) {
+        if(head)
+        {
+            reversePrint(head->next);
+        }
+        else return re;
+
+        re.push_back(head->val);
+        return re;
+    }
+};
