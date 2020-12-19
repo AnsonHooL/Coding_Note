@@ -1,9 +1,4 @@
-#include <iostream>
-#include <unordered_map>
-#include <vector>
-using namespace std;
-// n*m
-//要做越界检查，二维递增数组转化成，二叉搜索树
+
 bool findNumberIn2DArray(vector<vector<int>>& matrix, int target) {
     if(matrix.size() == 0 || matrix[0].size() == 0 ) return false;
     int n = matrix.size();
@@ -18,7 +13,13 @@ bool findNumberIn2DArray(vector<vector<int>>& matrix, int target) {
     }
     return false;
 }
-int main() {
-    std::cout << "Hello, World!" << std::endl;
-    return 0;
-}
+
+
+
+
+
+
+
+
+// n*m
+//要做越界检查，二维递增数组转化成，二叉搜索树
