@@ -37,3 +37,25 @@ public:
     stack<TreeNode*> mystack;
     int summ;
 };
+
+
+///思路就是 前序递归遍历 + xxx
+///思路一样，但是简洁一点的代码，但是跑起来慢了
+class Solution {
+public:
+    vector<vector<int>> re;
+    vector<int> path;
+    int pathval = 0;
+    vector<vector<int>> pathSum(TreeNode* root, int sum) {
+        if(root == NULL) return re;
+        int val = root->val;
+        pathval += val;
+        path.push_back(val);
+        if(pathval == sum && root->left == NULL && root->right == NULL) re.push_back(path);
+        if(root->left) pathSum(root->left,sum);
+        if(root->right) pathSum(root->right,sum);
+        pathval -= val;
+        path.pop_back();
+        return re;
+    }
+};
