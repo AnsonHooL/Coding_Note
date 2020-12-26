@@ -2,6 +2,10 @@
 // Created by lenovo on 2020/12/24.
 //
 
+
+///最长回文
+///cabbxxxbbaf,返回长度9：abbxxxbba
+
 ///暴力法往往能给我们带来提示进行优化
 ///暴力法也有用的哟，慢慢优化才是正常思维
 ///暴力法，从pos i ~ j，暴力遍历看是否为回文，j>i O（n*n*n）
@@ -52,15 +56,6 @@ public:
         return string(s,maxpos,maxlen);
     }
 };
-
-
-
-
-
-
-
-
-
 
 
 
