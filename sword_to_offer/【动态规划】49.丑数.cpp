@@ -10,7 +10,7 @@ public:
         int TWO=0,THREE=0,FIVE=0; //保存dp数组索引
         for(int i = 1; i<n; i++)
         {
-            //每一个丑数都是由前面的丑数*2*3*5得出来的
+            ///每一个丑数都是由前面的丑数*2*3*5得出来的，丑数 = 丑数 * （2 or 3 or 5）
             int twoth = dp[TWO] * 2;
             int threeth = dp[THREE] * 3;
             int fiveth = dp[FIVE] * 5;

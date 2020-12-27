@@ -15,6 +15,22 @@
  *
  * **/
 
+/***STL**/
+class Solution {
+public:
+    vector<string> permutation(string s) {
+        vector<string> re;
+        sort(s.begin(), s.end());
+        do{
+            re.push_back(s);
+        } while(next_permutation(s.begin(),s.end()));
+
+        return re;
+    }
+};
+
+
+
 /***解法一***/
 class Solution {
 public:

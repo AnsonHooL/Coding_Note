@@ -2,39 +2,29 @@
 // Created by lenovo on 2020/12/3.
 //
 
-
-
+///标准模板
 class Solution {
 public:
     int maxDepth(TreeNode* root) {
-        if(!root)
-            return 0;
-        queue<TreeNode*> myque;
-        TreeNode* record = root;
-        int level = 1;
-        myque.push(root);
-        while(!myque.empty())
+        if(!root) return 0;
+        int level = 0;
+        queue<TreeNode*> myqueue;
+        myqueue.push(root);
+        while (!myqueue.empty())
         {
-            TreeNode* read = myque.front();
-            myque.pop();
-            if(read->left)  myque.push(read->left);
-            if(read->right) myque.push(read->right);
-            if(read == record)
+            int size = myqueue.size();
+            for(int i = 0; i < size; i++)
             {
-                record = myque.back();
-                if(!myque.empty()) level++;
+                TreeNode* tmp = myqueue.front();
+                myqueue.pop();
+                if(tmp->left) myqueue.push(tmp->left);
+                if(tmp->right) myqueue.push(tmp->right);
             }
+            level++;
         }
         return level;
     }
 };
-
-
-
-
-
-
-
 /***
  *
  *

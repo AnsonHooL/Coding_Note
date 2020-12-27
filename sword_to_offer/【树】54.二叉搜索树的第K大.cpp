@@ -2,6 +2,7 @@
 // Created by lenovo on 2020/12/3.
 //
 
+///栈
 class Solution {
 public:
     int kthLargest(TreeNode* root, int k) {
@@ -27,6 +28,24 @@ public:
             }
         }
         return 0;
+    }
+};
+
+///递归
+class Solution {
+public:
+    int val;
+    int kthLargest(TreeNode* root, int k) {
+        int count = 0;
+        dfs(root, count,k);
+        return val;
+    }
+    void dfs(TreeNode* root, int& count, int k)
+    {
+        if(!root || count >= k) return;
+        dfs(root->right, count,k);
+        if(++count == k) val = root->val;
+        dfs(root->left, count, k);
     }
 };
 

@@ -2,6 +2,16 @@
 // Created by lenovo on 2020/10/10.
 //
 
+/**
+ * 1.快排
+ * 2.冒牌
+ * 3.维护大根堆，size K
+ * 4.快排+二分
+ *
+ * */
+
+
+
 /***** 数组中最小的K个数  ****/
 class Solution {
 public:

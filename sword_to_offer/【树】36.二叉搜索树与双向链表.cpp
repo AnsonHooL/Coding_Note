@@ -2,7 +2,8 @@
 // Created by lenovo on 2020/9/25.
 //
 /** 就是将二叉搜索树变成 有序双向链表 原地更新 -+*
- *
+ *  链表
+ *  按照中序遍历的顺序
  *
  *
  *
@@ -40,11 +41,11 @@ public:
         head->left = pre;
         return head;
     }
-    void dfs(Node* root)
+    void dfs(Node* root) ///递归中序遍历
     {
         if(root == NULL) return;
         dfs(root->left);
-        if(pre == NULL)
+        if(pre == NULL) ///第一个结点记录下来
         {
             pre  = root;
             head = root;
@@ -58,6 +59,6 @@ public:
         dfs(root->right);
     }
 
-    Node* pre;
-    Node* head;
+    Node* pre;    ///记录上一个结点是啥
+    Node* head;   ///记录头节点
 };

@@ -3,10 +3,6 @@
 //
 
 #include <iostream>
-
-
-
-
 class Solution {
 public:
     int missingNumber(vector<int>& nums) {
@@ -24,8 +20,9 @@ public:
                 high = mid -1;
             }
         }
-        if(nums[low] == low) return low + 1;
+        if(nums[low] == low) return low + 1; ///0 ~ n-1都在，没有n
         else return nums[low] - 1;
+
     }
 };
 
