@@ -9,7 +9,7 @@ public:
         int high = 1;
         int sum  = 0;
         vector<vector<int>> re;
-        while (low <= target/2)
+        while (low <= target/2)  ///注意循环终止条件
         {
             if(sum < target)
             {

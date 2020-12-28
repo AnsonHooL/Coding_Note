@@ -45,7 +45,7 @@ public:
         while (isdigit(str[i]) && str[i])
         {
             ///res * 10 + str[i]- '0' > INT32_MAX越界
-            if(res  > (INT32_MAX - (str[i] - '0')) / 10 )
+            if(res  > (INT32_MAX - (str[i] - '0')) / 10 ) ///加法转化为减法
             {
                 if(negative) return INT32_MIN;
                 else return INT32_MAX;

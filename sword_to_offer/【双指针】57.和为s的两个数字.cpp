@@ -10,7 +10,7 @@ public:
         while(low < high)
         {
             if(nums[low] + nums[high] == target)
-                return vector<int>{nums[low],nums[high]};
+                return vector<int>{nums[low],nums[high]};///列表初始化
             else if(nums[low] + nums[high] < target)
                 low++;
             else if(nums[low] + nums[high] > target)

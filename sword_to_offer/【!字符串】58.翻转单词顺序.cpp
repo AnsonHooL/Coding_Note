@@ -36,6 +36,7 @@ public:
 };
 
 
+///api法
 class Solution {
 public:
     string reverseWords(string s) {
