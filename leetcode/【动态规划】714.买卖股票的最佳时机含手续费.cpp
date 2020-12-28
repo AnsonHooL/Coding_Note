@@ -1,23 +1,6 @@
 //
 // Created by lenovo on 2020/12/17.
 //
-
-class Solution {
-public:
-    int maxProfit(vector<int>& prices, int fee) {
-        int dp1[50001] = {0};
-        int dp2[50001] = {0};
-        dp1[0] = 0; //不持有
-        dp2[0] = -prices[0];//持有
-        for(int i = 1; i < prices.size(); i++)
-        {
-            dp1[i] = max(dp1[i-1], dp2[i-1]+prices[i]-fee);
-            dp2[i] = max(dp2[i-1], dp1[i-1] - prices[i]);
-        }
-        return dp1[prices.size() -1];
-    }
-};
-
 /**
  * 给定一个整数数组 prices，其中第 i 个元素代表了第 i 天的股票价格 ；非负整数 fee 代表了交易股票的手续费用。
 
@@ -41,6 +24,25 @@ public:
  *
  *
  * */
+
+///套模板
+class Solution {
+public:
+    int maxProfit(vector<int>& prices, int fee) {
+        int dp1[50001] = {0};
+        int dp2[50001] = {0};
+        dp1[0] = 0; //不持有
+        dp2[0] = -prices[0];//持有
+        for(int i = 1; i < prices.size(); i++)
+        {
+            dp1[i] = max(dp1[i-1], dp2[i-1] + prices[i] - fee); ///昨天没持有今天不动， 昨天持有，今天买
+            dp2[i] = max(dp2[i-1], dp1[i-1] - prices[i]); ///昨天持有今天不动， 今天买入
+        }
+        return dp1[prices.size() -1];
+    }
+};
+
+
 
 ///思路：用多维的动态规划做，方程是用每天的最高收益，推出下一天的最高收益
 ///注意这里是可以多次买卖的，多了一个状态，持有股票和不持有股票的最高收益
