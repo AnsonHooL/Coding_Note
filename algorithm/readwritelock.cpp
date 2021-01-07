@@ -38,11 +38,11 @@ public:
         uint32_t expected = Flag.load() & 0x7fffffff;
         while(!Flag.compare_exchange_weak(expected,expected + 0x80000000))
         {
-            expected &= 0x7fffffff;
+            expected &= 0x7fffffff; ///先把锁占住，这时候不能加新的读锁和写锁
         }
         while(Flag.load() & 0x7fffffff != 0)
         {
-
+            ///等待读完毕
         }
     }
     void  Unlockwrite() noexcept
