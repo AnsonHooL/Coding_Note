@@ -23,8 +23,9 @@ public:
                     a += to_string(mynum.back());
                     re.push_back(a);
                 }
-                vector<int> a;
-                mynum.swap(a);
+//                vector<int> a;
+//                mynum.swap(a);
+                mynum.clear();
                 mynum.push_back(nums[i]);
             }
         }
