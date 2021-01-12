@@ -86,3 +86,73 @@ public:
  思路：并查集找出字符联通，然后再按找联通的字符进行排序，
  这道题最麻烦是最后的排序，如何优化时间复杂度的问题
  * */
+
+///下面我自己写的则会超时
+class Solution {
+public:
+    int findfa(int x, vector<int>& fa)
+    {
+        if(fa[x] == x) return x;
+        else
+        {
+            fa[x] = findfa(fa[x], fa);
+            return fa[x];
+        }
+    }
+
+    void merge(int x, int y, vector<int>& fa)
+    {
+        int xf = findfa(x, fa);
+        int yf = findfa(y, fa);
+        fa[xf] = yf;
+    }
+
+    string smallestStringWithSwaps(string s, vector<vector<int>>& pairs) {
+        int n = s.size();
+        vector<int> fa(n,1);
+        for(int i = 0; i < n; i++) fa[i] = i;
+        for(auto pair : pairs)
+        {
+            int x = pair[0];
+            int y = pair[1];
+            merge(x, y, fa);
+        }
+
+        int count = 0;
+        vector<int> flag(n,0);
+        while(count < n)
+        {
+//            priority_queue<int, vector<int>, greater<int>> mystrheap;
+//            priority_queue<int, vector<int>, greater<int>> myposheap;
+            vector<char> strvec;
+            vector<int>  posvec;
+            int father;
+            int start;
+            for(int i = 0; i < n; i++)
+            {
+                if(flag[i] == 0)
+                {
+                    father = findfa(i,fa);
+                    start = i;
+                    break;
+                }
+            }
+            for(int i = start; i < n; i++)
+            {
+                if(findfa(i,fa) == father)
+                {
+                    strvec.push_back(s[i]);
+                    posvec.push_back(i);
+                    count++;
+                    flag[i]  = 1;
+                }
+            }
+            sort(strvec.begin(), strvec.end());
+            for(int i = 0; i < strvec.size(); i++)
+            {
+                s[posvec[i]] = strvec[i];
+            }
+        }
+        return s;
+    }
+};
