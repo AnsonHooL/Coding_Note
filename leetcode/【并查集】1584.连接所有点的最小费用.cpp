@@ -15,6 +15,7 @@ public:
         return w < a.w;
     }
 };
+///值得学习，在类理重载这个比较操作符，就可以直接使用sort啦，很方便！！！！！！！！！！！！
 
 
 class Solution {
