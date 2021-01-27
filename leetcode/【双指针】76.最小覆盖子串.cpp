@@ -16,7 +16,7 @@ public:
         int lowre = 0;
         int highre = 0;
         int maxre  = INT32_MAX;
-        while (count < n && high < ssize)
+        while (count < n && high < ssize) ///这里high是负数，如果直接和无符号整型比较，就会隐式转换出错，溢出，切记切记
         {
             high++;
 //            cout<< high <<endl;
