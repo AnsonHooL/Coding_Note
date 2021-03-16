@@ -14,7 +14,9 @@ public:
             if(mymap.find(x[1]) == mymap.end()) mymap[x[1]] = nvar++;
         }
         vector<vector<double>> Graph(nvar, vector<double>(nvar, 0));
+
         for(int i = 0; i < nvar; i++) Graph[i][i] = 1.0;
+
         for(int i = 0; i < n; i++)
         {
             int left  = mymap[equations[i][0]];
@@ -22,7 +24,7 @@ public:
             Graph[left][right] = values[i];
             Graph[right][left] = 1 / values[i];
         }
-        for(int k = 0; k < nvar; k++)
+        for(int k = 0; k < nvar; k++)   ///外层循环是点，每加一个点，遍历所有边
         {
             for(int i = 0; i < nvar; i++)
             {
