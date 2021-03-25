@@ -36,6 +36,7 @@ public:
     void Lockwrite() noexcept
     {
         uint32_t expected = Flag.load() & 0x7fffffff;
+        ///cas(old_value, new_value),如果值等于old_value，则更新newvalue，如果失败则更新old_value
         while(!Flag.compare_exchange_weak(expected,expected + 0x80000000))
         {
             expected &= 0x7fffffff; ///先把锁占住，这时候不能加新的读锁和写锁
@@ -86,14 +87,18 @@ void write(int x)
 
 int main()
 {
-    std::thread t1(read,1);
-    std::thread t2(write,2);
-    std::thread t3(read,3);
-    std::thread t4(write,4);
-    t1.join();
-    t2.join();
-    t3.join();
-    t4.join();
+//    std::thread t1(read,1);
+//    std::thread t2(write,2);
+//    std::thread t3(read,3);
+//    std::thread t4(write,4);
+//    t1.join();
+//    t2.join();
+//    t3.join();
+//    t4.join();
+    glock.Lockwrite();
+    printf("1\n");
+    glock.Lockwrite();
+    printf("1\n");
 }
 
 
