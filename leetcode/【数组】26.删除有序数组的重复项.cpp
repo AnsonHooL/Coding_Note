@@ -37,6 +37,6 @@ int len = removeDuplicates(nums);
 for (int i = 0; i < len; i++) {
     print(nums[i]);
 }
- 
+
  *
  * /
