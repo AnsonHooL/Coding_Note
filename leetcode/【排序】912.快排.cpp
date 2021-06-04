@@ -25,11 +25,17 @@ public:
     }
     int quicksort(vector<int>& arr, int low, int high)  /**这才是标准模板**/
     {
+        int i = rand() % (high - low);
+        swap(arr[low], arr[low + i]);
         int head = arr[low];
+
+
         if(low>=high) return low;
         while(low < high)
         {
-            while(low<high && arr[high] >= head)
+            ///这里大于、大于等于都行，绝了
+            while(low<high && arr[high] > head)
+//            while(low<high && arr[high] >= head)
             {
                 high--;
             }

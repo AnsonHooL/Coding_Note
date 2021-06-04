@@ -2,6 +2,11 @@
 // Created by lenovo on 2020/12/16.
 //
 
+/**我的想法，是每个字母用质数表示，然后相乘
+ *
+ * 这里是先排序！！！，那必然相等
+ *
+ * */
 class Solution {
 public:
     vector<vector<string>> groupAnagrams(vector<string>& strs) {

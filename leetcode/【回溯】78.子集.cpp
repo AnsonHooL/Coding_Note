@@ -2,6 +2,7 @@
 // Created by lenovo on 2021/3/31.
 //
 
+
 class Solution {
 public:
     vector<vector<int>>  re;
@@ -25,6 +26,33 @@ public:
         }
 
         backtrace(nums, path, depth + 1);
+    }
+};
+
+///学完代码随想录的解法，思路清晰多了！不再莽夫
+
+class Solution {
+public:
+    vector<vector<int>> result;
+    vector<vector<int>> subsets(vector<int>& nums) {
+        vector<int> path;
+        backtarace(path, 0, nums);
+        return result;
+    }
+
+    void backtarace(vector<int>& path, int startindex, vector<int>& nums){
+
+        result.push_back(path);
+
+        for(int i = startindex; i < nums.size(); i++){
+
+            path.push_back(nums[i]);
+
+            backtarace(path,i + 1,nums);
+
+            path.pop_back();
+
+        }
     }
 };
 

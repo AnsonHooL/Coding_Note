@@ -35,7 +35,7 @@ public:
         dp2[0] = -prices[0];//持有
         for(int i = 1; i < prices.size(); i++)
         {
-            dp1[i] = max(dp1[i-1], dp2[i-1] + prices[i] - fee); ///昨天没持有今天不动， 昨天持有，今天买
+            dp1[i] = max(dp1[i-1], dp2[i-1] + prices[i] - fee); ///昨天没持有今天不动， 昨天持有，今天卖
             dp2[i] = max(dp2[i-1], dp1[i-1] - prices[i]); ///昨天持有今天不动， 今天买入
         }
         return dp1[prices.size() -1];
