@@ -15,7 +15,7 @@ public:
         }
         vector<vector<double>> Graph(nvar, vector<double>(nvar, 0));
 
-        for(int i = 0; i < nvar; i++) Graph[i][i] = 1.0;
+        for(int i = 0; i < nvar; i++) Graph[i][i] = 1.0; ///Graph[l][r] = mymap[i] / mymap[j]
 
         for(int i = 0; i < n; i++)
         {
@@ -26,6 +26,7 @@ public:
         }
         for(int k = 0; k < nvar; k++)   ///外层循环是点，每加一个点，遍历所有边
         {
+            ///遍历所有边
             for(int i = 0; i < nvar; i++)
             {
                 for(int j = 0; j < nvar; j++)
@@ -127,7 +128,7 @@ public:
             re.push_back(num);
         }
         return re;
-    }
+     }
 };
 
 
